@@ -5,9 +5,9 @@ Este repositório contém o arquivo ml_preditivo_bioimpedancia.py, um script Pyt
 ## Objetivo
 O script treina classificadores (Random Forest, Regressão Logística, XGBoost) para prever a coluna classificacao_vigor usando exclusivamente as três colunas de impedância/frequência:
 
-- z' / ohm
-- z'' / ohm
-- freq / hz
+- Z' / ohm
+- Z'' / ohm
+- Freq / hz
 
 O objetivo é comparar desempenho entre modelos e produzir curvas ROC e relatórios de classificação.
 
@@ -61,4 +61,5 @@ O script imprimirá métricas no terminal e exibirá (e salva) a figura de compa
 ---
 
 Arquivo focado: ml_preditivo_bioimpedancia.py. Este README explica apenas esse script, conforme solicitado.
+
 
