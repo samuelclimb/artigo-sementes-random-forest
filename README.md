@@ -1,19 +1,17 @@
-﻿# ml_preditivo_bioimpedancia.py
+﻿# Algoritmos de predição  Bioimpedância
 
-Este repositório contém o arquivo ml_preditivo_bioimpedancia.py, um script Python para treinar e avaliar modelos de classificação de vigor de sementes a partir de dados de bioimpedância.
+Este repositório agrupa scripts para treinar e avaliar classificadores de vigor de sementes usando dados de bioimpedância.
 
-## Objetivo
-O script treina classificadores (Random Forest, Regressão Logística, XGBoost) para prever a coluna classificacao_vigor usando exclusivamente as três colunas de impedância/frequência:
+Dois scripts principais estão presentes (ou foram preparados para inclusão):
 
-- Z' / ohm
-- Z'' / ohm
-- freq / hz
-
-O objetivo é comparar desempenho entre modelos e produzir curvas ROC e relatórios de classificação.
+- ml_preditivo_bioimpedancia.py  versão original, utiliza apenas as três features de impedância/frequência.
+- ml_preditivo_allfeatures.py  versão estendida que tenta aproveitar features adicionais quando disponíveis (por exemplo 
+eg. phase / ° e cs / f).
 
 ## Pré-requisitos
-- Python 3.8+ (testado em 3.11)
-- Pacotes (instale com pip install -r requirements.txt):
+
+- Python 3.8+ (testado com 3.11)
+- Dependências principais (instale com pip):
   - pandas
   - numpy
   - scikit-learn
@@ -21,47 +19,77 @@ O objetivo é comparar desempenho entre modelos e produzir curvas ROC e relatór
   - xgboost
   - matplotlib
 
-> Observação: se não houver 
-equirements.txt nesta pasta, instale as bibliotecas acima manualmente.
+Crie um ambiente virtual e instale as dependências antes de rodar os scripts:
 
-## Entradas
-Coloque o arquivo bioimpedance_dataset.xlsx na raiz do repositório (já presente neste repositório). O script espera que a planilha tenha, no mínimo, as colunas mencionadas em "Objetivo" e a coluna alvo classificacao_vigor.
+`powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install pandas numpy scikit-learn imbalanced-learn xgboost matplotlib
+`
 
-## Fluxo do algoritmo (resumo)
-1. Lê bioimpedance_dataset.xlsx (mesmo diretório do script).
-2. Seleciona as colunas z' / ohm, z'' / ohm, req / hz e a coluna alvo classificacao_vigor.
-3. Remove linhas com valores faltantes nas colunas selecionadas.
-4. Normaliza (StandardScaler) as três features.
-5. Codifica o alvo com LabelEncoder.
+## Dataset
+
+Coloque ioimpedance_dataset.xlsx na raiz do repositório (já incluído aqui). Os scripts esperam pelo menos as colunas:
+
+- z' / ohm
+- z'' / ohm
+- req / hz
+- classificacao_vigor (target)
+
+O script estendido também tenta usar, quando presentes:
+
+- 
+eg. phase / °
+- cs / f
+
+## ml_preditivo_bioimpedancia.py (origem)
+
+Resumo do fluxo:
+
+1. Lê ioimpedance_dataset.xlsx.
+2. Seleciona as três features originais e o target classificacao_vigor.
+3. Remove linhas com NaNs nas colunas selecionadas.
+4. Normaliza com StandardScaler.
+5. Codifica o target com LabelEncoder.
 6. Divide em treino/teste (25% teste) com estratificação.
-7. Executa Validação Cruzada estratificada (5 folds) usando pipelines com SMOTE (oversampling) seguido do modelo  isto evita vazamento de dados na validação.
-8. Treina cada modelo no conjunto de treino (com SMOTE dentro do pipeline), avalia no teste e faz:
-   - impressão da acurácia e do classification report;
-   - cálculo de ROC AUC (quando o modelo fornece probabilidades) e plot da curva ROC.
+7. Executa validação cruzada estratificada (5 folds) com SMOTE aplicado dentro do pipeline.
+8. Treina modelos (Random Forest, Logistic Regression, XGBoost), imprime classification reports e plota/compara curvas ROC.
 
-## Como rodar
-1. Ative seu ambiente Python com as dependências instaladas.
-2. No diretório deste repositório execute:
+Como executar:
 
 `powershell
 python ml_preditivo_bioimpedancia.py
 `
 
-O script imprimirá métricas no terminal e exibirá (e salva) a figura de comparação ROC.
+## ml_preditivo_allfeatures.py (estendido)
+
+Resumo do fluxo:
+
+1. Lê o mesmo dataset (.xlsx ou .csv como fallback).
+2. Verifica quais das features estendidas existem no arquivo e usa apenas as presentes.
+3. Remove linhas com NaNs (ou realiza imputação dependendo da versão do script) nas features selecionadas e no target.
+4. Escala, codifica target, aplica SMOTE em pipeline e executa CV e treino final  igual ao script original.
+
+Como executar:
+
+`powershell
+python ml_preditivo_allfeatures.py
+`
+
+Observações:
+
+- Se adicionar mais features e perder muitas amostras por causa de NaNs, considere implementar imputação (por exemplo SimpleImputer(strategy='median')) antes de dar dropnas.
+- SMOTE está configurado dentro do pipeline para evitar vazamento de dados durante a validação.
+- O script estendido imprime avisos se alguma coluna esperada não estiver presente.
 
 ## Saídas
-- Curva ROC exibida em tela e salva como figura (nome depende do script).
-- Relatórios de classificação e acurácias impressos no terminal.
 
-## Observações e boas práticas
-- O script remove linhas com NaNs nas colunas usadas; se você quiser usar mais features sem perder classes, implemente imputação antes.
-- SMOTE está corretamente aplicado dentro do pipeline para evitar data leakage.
-- Se precisar adaptar o alvo ou o conjunto de features, crie uma cópia do script e modifique apenas as variáveis e target.
+- Métricas (accuracy, classification report) são impressas no terminal.
+- Curvas ROC são plotadas e salvas como imagens.
+
+## Contribuições
+
+Se quiser que eu inclua um equirements.txt, exemplos de saída (plots/XLSX) no repositório ou um notebook de demonstração, diga qual deseja e eu adiciono.
 
 ---
-
-Arquivo focado: ml_preditivo_bioimpedancia.py. Este README explica apenas esse script, conforme solicitado.
-
-
-
-
+A versão estendida (ml_preditivo_allfeatures.py) foi adicionada recentemente e está na branch main deste repositório.
