@@ -1,4 +1,4 @@
-﻿# Algoritmos de predição  Bioimpedância
+﻿# Algoritmos de predição BIAS-SEEDs
 
 Este repositório agrupa scripts para treinar e avaliar classificadores de vigor de sementes usando dados de bioimpedância.
 
@@ -29,24 +29,20 @@ pip install pandas numpy scikit-learn imbalanced-learn xgboost matplotlib
 
 ## Dataset
 
-Coloque ioimpedance_dataset.xlsx na raiz do repositório (já incluído aqui). Os scripts esperam pelo menos as colunas:
+Coloque bioimpedance_dataset.xlsx na raiz do repositório (já incluído aqui). Os scripts esperam pelo menos as colunas:
 
 - z' / ohm
 - z'' / ohm
-- req / hz
-- classificacao_vigor (target)
-
-O script estendido também tenta usar, quando presentes:
-
-- 
-eg. phase / °
+- frequência / hz
+- deg. phase / °
 - cs / f
+- classificacao_vigor (target)
 
 ## ml_preditivo_bioimpedancia.py (origem)
 
 Resumo do fluxo:
 
-1. Lê ioimpedance_dataset.xlsx.
+1. Lê bioimpedance_dataset.xlsx.
 2. Seleciona as três features originais e o target classificacao_vigor.
 3. Remove linhas com NaNs nas colunas selecionadas.
 4. Normaliza com StandardScaler.
@@ -87,9 +83,5 @@ Observações:
 - Métricas (accuracy, classification report) são impressas no terminal.
 - Curvas ROC são plotadas e salvas como imagens.
 
-## Contribuições
 
-Se quiser que eu inclua um equirements.txt, exemplos de saída (plots/XLSX) no repositório ou um notebook de demonstração, diga qual deseja e eu adiciono.
 
----
-A versão estendida (ml_preditivo_allfeatures.py) foi adicionada recentemente e está na branch main deste repositório.
