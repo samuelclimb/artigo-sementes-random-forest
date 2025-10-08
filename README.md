@@ -7,7 +7,7 @@ O script treina classificadores (Random Forest, Regressão Logística, XGBoost) 
 
 - Z' / ohm
 - Z'' / ohm
-- Freq / hz
+- freq / hz
 
 O objetivo é comparar desempenho entre modelos e produzir curvas ROC e relatórios de classificação.
 
@@ -28,7 +28,7 @@ equirements.txt nesta pasta, instale as bibliotecas acima manualmente.
 Coloque o arquivo bioimpedance_dataset.xlsx na raiz do repositório (já presente neste repositório). O script espera que a planilha tenha, no mínimo, as colunas mencionadas em "Objetivo" e a coluna alvo classificacao_vigor.
 
 ## Fluxo do algoritmo (resumo)
-1. Lê ioimpedance_dataset.xlsx (mesmo diretório do script).
+1. Lê bioimpedance_dataset.xlsx (mesmo diretório do script).
 2. Seleciona as colunas z' / ohm, z'' / ohm, req / hz e a coluna alvo classificacao_vigor.
 3. Remove linhas com valores faltantes nas colunas selecionadas.
 4. Normaliza (StandardScaler) as três features.
@@ -56,11 +56,12 @@ O script imprimirá métricas no terminal e exibirá (e salva) a figura de compa
 ## Observações e boas práticas
 - O script remove linhas com NaNs nas colunas usadas; se você quiser usar mais features sem perder classes, implemente imputação antes.
 - SMOTE está corretamente aplicado dentro do pipeline para evitar data leakage.
-- Se precisar adaptar o alvo ou o conjunto de features, crie uma cópia do script e modifique apenas as variáveis eatures e 	arget.
+- Se precisar adaptar o alvo ou o conjunto de features, crie uma cópia do script e modifique apenas as variáveis e target.
 
 ---
 
 Arquivo focado: ml_preditivo_bioimpedancia.py. Este README explica apenas esse script, conforme solicitado.
+
 
 
 
