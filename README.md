@@ -25,7 +25,7 @@ O objetivo é comparar desempenho entre modelos e produzir curvas ROC e relatór
 equirements.txt nesta pasta, instale as bibliotecas acima manualmente.
 
 ## Entradas
-Coloque o arquivo ioimpedance_dataset.xlsx na raiz do repositório (já presente neste repositório). O script espera que a planilha tenha, no mínimo, as colunas mencionadas em "Objetivo" e a coluna alvo classificacao_vigor.
+Coloque o arquivo bioimpedance_dataset.xlsx na raiz do repositório (já presente neste repositório). O script espera que a planilha tenha, no mínimo, as colunas mencionadas em "Objetivo" e a coluna alvo classificacao_vigor.
 
 ## Fluxo do algoritmo (resumo)
 1. Lê ioimpedance_dataset.xlsx (mesmo diretório do script).
@@ -61,5 +61,6 @@ O script imprimirá métricas no terminal e exibirá (e salva) a figura de compa
 ---
 
 Arquivo focado: ml_preditivo_bioimpedancia.py. Este README explica apenas esse script, conforme solicitado.
+
 
 
