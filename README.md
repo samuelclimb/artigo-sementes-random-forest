@@ -7,7 +7,7 @@ O script treina classificadores (Random Forest, Regressão Logística, XGBoost) 
 
 - z' / ohm
 - z'' / ohm
-- req / hz
+- freq / hz
 
 O objetivo é comparar desempenho entre modelos e produzir curvas ROC e relatórios de classificação.
 
@@ -21,7 +21,8 @@ O objetivo é comparar desempenho entre modelos e produzir curvas ROC e relatór
   - xgboost
   - matplotlib
 
-> Observação: se não houver equirements.txt nesta pasta, instale as bibliotecas acima manualmente.
+> Observação: se não houver 
+equirements.txt nesta pasta, instale as bibliotecas acima manualmente.
 
 ## Entradas
 Coloque o arquivo ioimpedance_dataset.xlsx na raiz do repositório (já presente neste repositório). O script espera que a planilha tenha, no mínimo, as colunas mencionadas em "Objetivo" e a coluna alvo classificacao_vigor.
@@ -60,3 +61,4 @@ O script imprimirá métricas no terminal e exibirá (e salva) a figura de compa
 ---
 
 Arquivo focado: ml_preditivo_bioimpedancia.py. Este README explica apenas esse script, conforme solicitado.
+
