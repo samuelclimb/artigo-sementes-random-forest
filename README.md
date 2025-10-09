@@ -38,30 +38,12 @@ Coloque bioimpedance_dataset.xlsx na raiz do repositório (já incluído aqui). 
 - cs / f
 - classificacao_vigor (target)
 
-## ml_preditivo_bioimpedancia.py (origem)
+
+## ml_preditivo_allfeatures.py
 
 Resumo do fluxo:
 
-1. Lê bioimpedance_dataset.xlsx.
-2. Seleciona as três features originais e o target classificacao_vigor.
-3. Remove linhas com NaNs nas colunas selecionadas.
-4. Normaliza com StandardScaler.
-5. Codifica o target com LabelEncoder.
-6. Divide em treino/teste (25% teste) com estratificação.
-7. Executa validação cruzada estratificada (5 folds) com SMOTE aplicado dentro do pipeline.
-8. Treina modelos (Random Forest, Logistic Regression, XGBoost), imprime classification reports e plota/compara curvas ROC.
-
-Como executar:
-
-`powershell
-python ml_preditivo_bioimpedancia.py
-`
-
-## ml_preditivo_allfeatures.py (estendido)
-
-Resumo do fluxo:
-
-1. Lê o mesmo dataset (.xlsx ou .csv como fallback).
+1. Lê o dataset (.xlsx ou .csv como fallback).
 2. Verifica quais das features estendidas existem no arquivo e usa apenas as presentes.
 3. Remove linhas com NaNs (ou realiza imputação dependendo da versão do script) nas features selecionadas e no target.
 4. Escala, codifica target, aplica SMOTE em pipeline e executa CV e treino final  igual ao script original.
@@ -82,6 +64,7 @@ Observações:
 
 - Métricas (accuracy, classification report) são impressas no terminal.
 - Curvas ROC são plotadas e salvas como imagens.
+
 
 
 
