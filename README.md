@@ -25,7 +25,7 @@ pip install pandas numpy scikit-learn imbalanced-learn xgboost matplotlib openpy
 - Colunas esperadas (pelo menos):
   - z' / ohm
   - z'' / ohm
-  - Frequência / hz
+  - Frequência / hz
   - classificacao_vigor (target)
 
 - Colunas opcionais (serão usadas se existirem):
