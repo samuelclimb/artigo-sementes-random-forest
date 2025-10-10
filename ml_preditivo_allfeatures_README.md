@@ -1,12 +1,10 @@
 ﻿# ml_preditivo_allfeatures.py
 
-Este README descreve especificamente o script ml_preditivo_allfeatures.py  a versão estendida do algoritmo de predição por bioimpedância que tenta aproveitar um conjunto maior de features do dataset.
+Este README descreve especificamente o script ml_preditivo_allfeatures.py 
 
 ## Objetivo
 
-Treinar e avaliar classificadores para prever classificacao_vigor usando não apenas as três features originais (z' / ohm, z'' / ohm, req / hz) mas também features adicionais quando presentes, por exemplo 
-eg. phase / ° e cs / f.
-
+Treinar e avaliar classificadores para prever classificacao_vigor usando (z' / ohm, z'' / ohm, req / hz deg. phase / ° e cs / f).
 O foco é avaliar se a inclusão de mais sinais eletrofísicos melhora a capacidade preditiva sem introduzir vazamento de dados ou viés.
 
 ## Dependências
@@ -31,8 +29,8 @@ pip install pandas numpy scikit-learn imbalanced-learn xgboost matplotlib openpy
   - classificacao_vigor (target)
 
 - Colunas opcionais (serão usadas se existirem):
-  - 
-eg. phase / °
+
+  - deg. phase / °
   - cs / f
 
 O script verifica automaticamente quais colunas estão presentes e usa somente as que existem.
@@ -61,15 +59,15 @@ O script imprime progresso e resultados no terminal. As figuras ROC são exibida
 
 ## Onde os resultados ficam
 
-- Gráficos ROC: salvos no diretório do script com nome contendo oc_comparacao_modelos.
+- Gráficos ROC: salvos no diretório do script com nome contendo 
+oc_comparacao_modelos.
 - Relatórios: impressos no terminal; você pode redirecionar a saída para um arquivo se quiser arquivar.
 
 ## Boas práticas e notas
 
-- Ao incluir mais features, é comum reduzir o número de linhas válidas por causa de NaNs. Se perder muitas amostras, prefira imputação (SimpleImputer(strategy='median')) antes do drop.
 - SMOTE está aplicado dentro da pipeline para evitar data leakage. Não mova o SMOTE para fora do pipeline se pretende fazer validação correta.
 - Para XGBoost, passe y já codificado (inteiros). O parâmetro use_label_encoder é obsoleto em versões recentes do XGBoost; recomendamos não usá-lo (o aviso observado é informativo apenas).
-- Para problemas multiclass com XGBoost, usar objective='multi:softprob' e eval_metric='mlogloss' é apropriado.
+
 
 ## Sugestões de extensão
 
@@ -77,6 +75,5 @@ O script imprime progresso e resultados no terminal. As figuras ROC são exibida
 - Salvar métricas (por modelo) em CSV/XLSX para comparações reproduzíveis.
 - Incluir um notebook de exemplo com visualizações detalhadas por classe.
 
----
+--
 
-**Observação:** este README foi criado automaticamente e com foco apenas no arquivo ml_preditivo_allfeatures.py conforme solicitado.
