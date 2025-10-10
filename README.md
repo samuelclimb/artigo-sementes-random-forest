@@ -21,7 +21,7 @@ pip install pandas numpy scikit-learn imbalanced-learn xgboost matplotlib openpy
 
 ## Entradas
 
-- Bioimpedance_dataset.xlsx (coloque na raiz do repositório). O script também faz fallback para ioimpedance_dataset.csv caso o .xlsx não exista.
+- Bioimpedance_dataset.xlsx (coloque na raiz do repositório). O script também faz fallback para bioimpedance_dataset.csv caso o .xlsx não exista.
 - Colunas esperadas (pelo menos):
   - z' / ohm
   - z'' / ohm
