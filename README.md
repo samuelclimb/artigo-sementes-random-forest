@@ -4,7 +4,7 @@ Este README descreve especificamente o script ml_preditivo_allfeatures.py
 
 ## Objetivo
 
-Treinar e avaliar classificadores para prever classificacao_vigor usando (z' / ohm, z'' / ohm, req / hz deg. phase / ° e cs / f).
+Treinar e avaliar classificadores para prever classificacao_vigor usando (z' / ohm, z'' / ohm, frequencia / hz deg. phase / ° e cs / f).
 O foco é avaliar se a inclusão de mais sinais eletrofísicos melhora a capacidade preditiva sem introduzir vazamento de dados ou viés.
 
 ## Dependências
