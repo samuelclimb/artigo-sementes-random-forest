@@ -63,9 +63,8 @@ O script imprime progresso e resultados no terminal. As figuras ROC são exibida
 oc_comparacao_modelos.
 - Relatórios: impressos no terminal; você pode redirecionar a saída para um arquivo se quiser arquivar.
 
-## Boas práticas e notas
+## notas
 
-- SMOTE está aplicado dentro da pipeline para evitar data leakage. Não mova o SMOTE para fora do pipeline se pretende fazer validação correta.
 - Para XGBoost, passe y já codificado (inteiros). O parâmetro use_label_encoder é obsoleto em versões recentes do XGBoost; recomendamos não usá-lo (o aviso observado é informativo apenas).
 
 
